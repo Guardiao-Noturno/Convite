@@ -10,7 +10,9 @@
 body{
 margin:0;
 font-family:'Georgia',serif;
-background:linear-gradient(135deg,#1e3c72,#2a5298);
+background:linear-gradient(135deg,#001f6b,#4169E1,#0033cc);
+background-size:400% 400%;
+animation:fundoAnimado 12s ease infinite;
 height:100vh;
 display:flex;
 align-items:center;
@@ -18,7 +20,26 @@ justify-content:center;
 overflow:hidden;
 color:#333;
 }
+  /*animacao fundo*/
+  @keyframes fundoAnimado{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
 
+@keyframes brilhar{
+
+0%{
+transform:scale(0.6);
+opacity:0.3;
+}
+
+100%{
+transform:scale(1.4);
+opacity:1;
+}
+
+}
 /* ENVELOPE */
 
 #envelope{
@@ -207,15 +228,36 @@ transform:translateY(-50px) rotate(0);
 100%{
 transform:translateY(100vh) rotate(360deg);
 }
-
+}
+  .estrela{
+position:absolute;
+color:white;
+font-size:18px;
+opacity:0.8;
+animation:brilhar 2s infinite alternate;
 }
 
+@keyframes brilhar{
+
+0%{
+transform:scale(0.6);
+opacity:0.3;
+}
+
+100%{
+transform:scale(1.4);
+opacity:1;
+}
+
+}
 </style>
 </head>
 
 <body>
-
-<audio id="musica" loop></audio>
+  
+<audio id="musica" loop>
+<source src="Ed Sheeran - Photograph.mp3" type="audio/mpeg">
+</audio>
 
 <div id="envelope" onclick="abrir()">
 
@@ -264,7 +306,7 @@ Itaituba – PA
 <br>
 
 <a class="botao whatsapp"
-href="https://wa.me/93991864369?text=Aceito%20ser%20padrinho!"
+href="https://wa.me/93991864369?text=Aceito%20ser%20sua%20testemunha!"
 target="_blank">
 Confirmar no WhatsApp
 </a>
@@ -337,6 +379,17 @@ document.getElementById("contador").innerHTML =
 "Faltam " + dias + " dias e " + horas + " horas para o casamento 💒";
 
 },1000);
+  
+  /* ESTRELAS */
+
+for(let i=0;i<15;i++){
+let estrela=document.createElement("div");
+estrela.className="estrela";
+estrela.innerHTML="✨";
+estrela.style.left=Math.random()*100+"%";
+estrela.style.top=Math.random()*100+"%";
+document.body.appendChild(estrela);
+}
 
 </script>
 
